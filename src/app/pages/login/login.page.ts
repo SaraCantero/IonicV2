@@ -29,6 +29,7 @@ export class LoginPage implements OnInit {
       this.token = data;
       //Para obtener el token del usuario que se loguea
       this.restService.setToken(this.token.data.token);
+      this.restService.setcicleUser(this.token.data.cicle_id);
       //
       if(this.token.success){
         console.log('Login correcto');
