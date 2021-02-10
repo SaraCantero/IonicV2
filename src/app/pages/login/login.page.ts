@@ -30,14 +30,14 @@ export class LoginPage implements OnInit {
       //Para obtener datos del usuario que se loguea
       this.restService.setToken(this.token.data.token);
       this.restService.setcicleUser(this.token.data.cicle_id);
-      this.restService.setUserId(this.token.data.id);
+      
       //
       if(this.token.success){
         console.log('Login correcto');
         if(this.token.data.type=="client"){
-          this.router.navigateByUrl('/tabs/tab1');
+          this.router.navigateByUrl('clientes/tabs/tab1');
         }else{
-          this.router.navigateByUrl('/tabs/tab2');
+          this.router.navigate(['admin/admin/admin1']);
         }
         
       }
