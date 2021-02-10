@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RestService } from 'src/app/services/rest.service';
 
 @Component({
   selector: 'app-tab3',
@@ -7,6 +8,21 @@ import { Component } from '@angular/core';
 })
 export class Tab3Page {
 
-  constructor() {}
+  offersApliques: any;
 
+  constructor(public restService: RestService) {
+
+    this.obtenerOfertasApliques();
+  }
+
+  obtenerOfertasApliques(){
+
+    this.restService.getApliquesOffers()
+    .then((res: any) => {
+      this.offersApliques=res.data;
+      console.log(this.offersApliques);
+    },
+    );
+  }
+  
 }

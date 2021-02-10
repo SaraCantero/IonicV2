@@ -12,6 +12,7 @@ export class Tab2Page {
   offers: any;
   cicles: any;
   df=0;
+  ofId: any;
   contador=0;
   contador2=0;
   clIDs = [];
@@ -19,7 +20,7 @@ export class Tab2Page {
   constructor(public restService: RestService) {
     //this.hacerLogin();
     this.obtenerOfertas();
-    this.obtenerCicloIds();
+    //this.obtenerCicloIds();
   }
 
   // hacerLogin(){
@@ -67,5 +68,7 @@ export class Tab2Page {
     })
   }
 
-  
+  mostrar(){
+    console.log("{{offer.id}}");
+  }
 }
