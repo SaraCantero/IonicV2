@@ -10,6 +10,7 @@ import { Users } from 'src/app/interfaces/users';
 export class Admin1Page {
 
    usuarios: Users[];
+   user_id: any;
 
  
    constructor(public restService: RestService,) {
@@ -29,6 +30,19 @@ export class Admin1Page {
       }
     );
 
+    }
+    Activate(){
+      this.restService.activarUser(this.user_id)
+      .then((res:any)=>{
+        if(res.success){
+          this.user_id=res.data;
+          console.log(this.user_id);
+        }
+      },
+      (error)=>{
+        console.error(error);
+      }
+      );
     }
       }
 

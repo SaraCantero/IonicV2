@@ -141,6 +141,23 @@ export class RestService {
     });
   }
 
+  activarUser(user_id:String){
+    return new Promise((resolve)=>{
+      this.http.post(this.apiUrl + "/activate", {
+        user_id: user_id,
+        headers: new HttpHeaders().set('Authorization','Bearer ' + this.token2),
+      })
+      .subscribe(
+        (data)=>{
+          resolve(data);
+        },
+        (err) => {
+          console.log(err);
+        }
+      );
+    });
+  }
+
   //Token
   setToken(valor: any){
     this.tokenLogin= valor;
@@ -174,9 +191,7 @@ export class RestService {
 
     this.userId=valor;
   }
-
   getUserId(){
-
     return this.userId;
   }
 }
