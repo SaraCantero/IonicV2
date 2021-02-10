@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { RestService } from '../../../services/rest.service';
+import { OffersData } from 'src/app/interfaces/offers';
 
 @Component({
   selector: 'app-tab2',
@@ -9,7 +10,7 @@ import { RestService } from '../../../services/rest.service';
 export class Tab2Page {
 
   //token: any;
-  offers: any;
+  offers: OffersData[]=[];
   cicles: any;
   df=0;
   ofId: any;
@@ -20,7 +21,7 @@ export class Tab2Page {
   constructor(public restService: RestService) {
     //this.hacerLogin();
     this.obtenerOfertas();
-    //this.obtenerCicloIds();
+    this.obtenerCicloIds();
   }
 
   // hacerLogin(){
@@ -68,7 +69,7 @@ export class Tab2Page {
     })
   }
 
-  mostrar(){
-    console.log("{{offer.id}}");
+  mostrar($dato: any){
+    console.log($dato);
   }
 }

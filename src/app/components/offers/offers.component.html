@@ -1,0 +1,5 @@
+<ion-col size="12" size-lg="3" size-md="2" 
+size-sm="6" size-xs="12"
+*ngFor="let offer of offers; let i = index">
+<app-offer [offer]="offer" [i]="i"></app-offer>
+</ion-col>

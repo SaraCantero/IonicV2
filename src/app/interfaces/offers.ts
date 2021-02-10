@@ -1,9 +1,4 @@
-export interface Offers{
-    success: boolean;
-    data: Data[];
-    message: string;
-}
-export interface Data{
+export interface OffersData{
     id: number;
     headline:string;
     description: string;
