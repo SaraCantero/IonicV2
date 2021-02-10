@@ -1,17 +1,28 @@
+<ion-grid fixed>
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
+  <ion-toolbar color="dark">
+    <ion-title color="success">
+      MIS APLIQUES
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-col size="12" size-lg="3" size-md="2" size-sm="6" size-xs="12"
+  *ngFor="let offerApliques of offersApliques">
+  <ion-card color="dark">
+      <ion-card-header>
+      <h2>{{offerApliques.headline}}</h2>
+      </ion-card-header>
+      <ion-card-content>
+      <p>{{offerApliques.description}}</p>
+      <p>Id ciclo: {{offerApliques.cicle_id}}</p>
+      <p>Fecha maxima: {{offerApliques.date_max}}</p>
+      <p>Numero de candidatos: {{offerApliques.num_candidates}}</p>
+      </ion-card-content>
+  </ion-card>
+    </ion-col>
+
 </ion-content>
+</ion-grid>
