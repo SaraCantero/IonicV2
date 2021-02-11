@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Cicles } from 'src/app/interfaces/cicles';
 import { OffersData } from 'src/app/interfaces/offers';
 
 @Component({
