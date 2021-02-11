@@ -12,6 +12,7 @@ export class Tab2Page {
   //token: any;
   offers: OffersData[]=[];
   cicles: any;
+  apliques: any;
   df=0;
   ofId: any;
   contador=0;
@@ -24,17 +25,13 @@ export class Tab2Page {
     this.obtenerCicloIds();
   }
 
-  // hacerLogin(){
-  //   this.restService.login('raulreyes@gmail.com','123456').then(data => {
-  //     console.log('Token: ', data);
-  //     this.token = data;
-  //   });
-  // }
+  //Usar esto para quitar ofertas del apliques
 
   obtenerOfertas(){
     this.restService.getOffers()
     .then((res: any) => {
       this.offers=res.data;
+      console.log("OFERTAS");
       console.log(this.offers);
       if(this.df>0){
         this.contador=0;
@@ -69,7 +66,5 @@ export class Tab2Page {
     })
   }
 
-  mostrar($dato: any){
-    console.log($dato);
-  }
+
 }
