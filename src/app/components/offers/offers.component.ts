@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
 import { OffersData } from 'src/app/interfaces/offers';
 import { RestService } from 'src/app/services/rest.service';
-import { OfferComponent } from '../offer/offer.component';
 
 @Component({
   selector: 'app-offers',
@@ -13,7 +11,7 @@ export class OffersComponent implements OnInit {
 
   @Input() offers: OffersData[] = [];
   
-  constructor(public restService: RestService, private modalCtrl: ModalController) { }
+  constructor(public restService: RestService) { }
 
   recogerId($dato: any){
     console.log("Id_oferta: "+$dato);
@@ -22,16 +20,10 @@ export class OffersComponent implements OnInit {
     this.restService.postApliqueOffer(this.restService.getUserId(),$dato);
   }
 
-  async abrirModal(){
-    const modal = await this.modalCtrl.create({
-      component: OfferComponent,
-      componentProps: {
-      headline: 'Raúl',
-      }
-      });
-      await modal.present();
+  abrirModalOffers($id1: any, $titulo1: any, $descripcion1: any, $ciclo1: any, $fecha1: any, $cand1: any){
+    this.restService.abrirModal($id1, $titulo1, $descripcion1, $ciclo1, $fecha1, $cand1);
   }
-  
+
   ngOnInit() {}
 
 }

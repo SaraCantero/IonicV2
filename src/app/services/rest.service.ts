@@ -1,5 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { ModalController } from "@ionic/angular";
+import { OfferComponent } from "../components/offer/offer.component";
 //import { registerLocaleData } from "@angular/common";
 //import { resolve } from "dns";
 
@@ -23,7 +25,7 @@ export class RestService {
   //
  
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private modalCtrl: ModalController) {}
 
   //Metodos
 
@@ -124,6 +126,21 @@ export class RestService {
     });
   }
 
+  async abrirModal($id: any, $titulo: any, $descripcion: any, $ciclo: any, $fecha: any, $cand: any){
+    const modal = await this.modalCtrl.create({
+      component: OfferComponent,
+      componentProps: {
+      headline: $titulo,
+      description: $descripcion,
+      id: 'Id: '+$id,
+      cicle_id: 'Id Ciclo: '+$ciclo,
+      date_max: 'Fecha máx: '+$fecha,
+      num_candidates: 'Num Candidatos: '+$cand
+      }
+      });
+      await modal.present();
+  }
+  
   //Register/Login
 
   register(name:String, surname:String, email:String, password:String, c_password:String, cicle_id: String){

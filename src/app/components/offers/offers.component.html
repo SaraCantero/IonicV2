@@ -6,7 +6,8 @@ size-sm="6" size-xs="12"
       <h2>{{offer.headline}}</h2>
       </ion-card-header>
       <ion-card-content>
-      <ion-button (click)="abrirModal()">Ver </ion-button>
+      <ion-button (click)="abrirModalOffers(offer.id, offer.headline, offer.description,
+      offer.cicle_id, offer.fecha_max, offer.num_candidates)">Ver </ion-button>
       <ion-button (click)="recogerId(offer.id)">Aplicar</ion-button>
       </ion-card-content>
 </ion-card>
