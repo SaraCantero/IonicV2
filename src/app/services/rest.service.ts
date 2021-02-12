@@ -141,7 +141,7 @@ export class RestService {
     });
   }
 
-  activarUser(user_id:String){
+  activarUser(user_id:number){
     return new Promise((resolve)=>{
       this.http.post(this.apiUrl + "/activate", {
         user_id: user_id,
