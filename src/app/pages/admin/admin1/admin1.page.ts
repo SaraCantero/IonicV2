@@ -9,8 +9,9 @@ import { Users } from 'src/app/interfaces/users';
 })
 export class Admin1Page {
 
-   usuarios: Users[];
+   usuarios: any;
   //  user_id=this.restService.getUserId();
+  
 
  
    constructor(public restService: RestService,) {
@@ -31,19 +32,19 @@ export class Admin1Page {
     );
 
     }
-  //   Activate(){
-  //     this.restService.activarUser(this.user_id)
-  //     .then((res:any)=>
-  //   {if(res.success){
-  //     this.user_id=res.data;
-  //     console.log(this.user_id);
-  //   }
-  // },
-  //     (error)=>{
-  //       console.error(error);
-  //     }
-  //     );
-  //     }
+    Activate(valor:any){
+      this.restService.activarUser(valor)
+      .then((res:any)=>
+    {if(res.success){
+     console.log(res);
+     this.obtenerUsuarios();
+    }
+  },
+      (error)=>{
+        console.error(error);
+      }
+      );
+      }
     }
       
     

@@ -197,10 +197,10 @@ export class RestService {
     });
   }
 
-  activarUser(user_id:number){
+  activarUser(user_id:any){
     return new Promise((resolve)=>{
       this.http.post(this.apiUrl + "/activate", {
-        user_id: user_id,
+        user_id: user_id},{
         headers: new HttpHeaders().set('Authorization','Bearer ' + this.token2),
       })
       .subscribe(
