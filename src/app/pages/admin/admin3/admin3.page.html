@@ -12,7 +12,7 @@
 <h2>{{offer.headline}}</h2>
 </ion-item>
 <ion-item-options side="start">
- <ion-item-option (click)="eliminar(offer.id)" style="background-color:red;">
+ <ion-item-option (click)="confirmar(offer.headline, offer.id)" style="background-color:red;">
  <ion-icon slot="icon-only" name="trash" style="color:black;"></ion-icon>
  </ion-item-option>
 </ion-item-options>

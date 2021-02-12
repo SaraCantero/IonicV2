@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActionSheetController } from '@ionic/angular';
 import { OffersData } from 'src/app/interfaces/offers';
 import { RestService } from 'src/app/services/rest.service';
 
@@ -11,7 +12,7 @@ export class Admin3Page {
 
   offers: OffersData[]=[];
 
-  constructor(public restService: RestService) { 
+  constructor(public restService: RestService, private actionSheetCtrl: ActionSheetController) { 
     this.obtenerOfertas2();
   }
 
@@ -23,6 +24,30 @@ export class Admin3Page {
       console.log(this.offers);
     }
     )
+  }
+
+  async confirmar(nombre: any, id: any){
+    const actionSheet = await this.actionSheetCtrl.create({
+      header: '¿Seguro que quieres borrar '+nombre+'?',
+      buttons: [{
+      text: 'Borrar',
+      role: 'destructive', // Este role hace que, en Iphone, aparezca en rojo
+      icon: 'trash',
+      handler: () => {
+      this.eliminar(id);
+      console.log('Delete clicked');
+      this.obtenerOfertas2();
+      }
+      }, {
+      text: 'Cancelar',
+      icon: 'close',
+      role: 'cancel', // Este role hace que si pinchamos fuera se ejecute
+      handler: () => {
+      console.log('Cancel clicked');
+      }
+      }]
+      });
+      await actionSheet.present();
   }
 
   eliminar(id: any){
