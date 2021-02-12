@@ -14,9 +14,8 @@ export class OffersComponent implements OnInit {
   @Input() offers: OffersData[] = [];
   
   constructor(public restService: RestService) {
-    //usar if para establecer boolean ngIf
     this.tipo=restService.getType();
-    if(this.tipo="client"){
+    if(this.tipo=="client"){
       this.mostrarAplicar=true;
     }else{
       this.mostrarAplicar=false;

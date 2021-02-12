@@ -31,7 +31,7 @@ export class LoginPage implements OnInit {
       this.restService.setToken(this.token.data.token);
       this.restService.setcicleUser(this.token.data.cicle_id);
       this.restService.setUserId(this.token.data.id);
-      this.restService.setToken(this.token.data.type);
+      this.restService.setType(this.token.data.type);
       
       //
       if(this.token.success){
