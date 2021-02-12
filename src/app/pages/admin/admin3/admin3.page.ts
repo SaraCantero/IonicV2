@@ -25,4 +25,8 @@ export class Admin3Page {
     )
   }
 
+  eliminar(id: any){
+    this.restService.borrarOfertas(id);
+  }
+
 }
