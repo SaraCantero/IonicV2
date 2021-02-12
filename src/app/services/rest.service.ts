@@ -156,6 +156,21 @@ export class RestService {
       await modal.present();
   }
   
+  borrarOfertas(idO: any){
+    return new Promise<any>((resolve) => {
+      this.http.delete(this.apiUrl + "/offers/"+idO, { 
+        headers: new HttpHeaders().set('Authorization','Bearer ' + this.tokenLogin),
+      }).subscribe(
+        (data) => {
+          resolve(data);
+        },
+        (err) => {
+          console.log(err)
+        }
+      );
+    });
+  }
+
   //Register/Login
 
   register(name:String, surname:String, email:String, password:String, c_password:String, cicle_id: String){
