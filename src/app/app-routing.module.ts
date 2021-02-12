@@ -28,15 +28,6 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./pages/admin/admin/admin.module').then( m => m.AdminPageModule)
   },
-  {
-    path: 'modal',
-    loadChildren: () => import('./pages/modal/modal.module').then( m => m.ModalPageModule)
-  },
-  // {
-  //   path: 'modal-info',
-  //   loadChildren: () => import('./pages/modal-info/modal-info.module').then( m => m.ModalInfoPageModule)
-  // },
-
 
 
 ];
