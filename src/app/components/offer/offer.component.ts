@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Cicles } from 'src/app/interfaces/cicles';
+import { ModalController } from '@ionic/angular';
 import { OffersData } from 'src/app/interfaces/offers';
 
 @Component({
@@ -11,7 +11,11 @@ export class OfferComponent implements OnInit {
   @Input() offer: OffersData;
   @Input() i: number;
   
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
+
+  public salirSinArgumentos() {
+    this.modalCtrl.dismiss();
+   }
 
   ngOnInit() {}
 
