@@ -16,10 +16,8 @@
       <h2>{{offerApliques.headline}}</h2>
       </ion-card-header>
       <ion-card-content>
-      <p>{{offerApliques.description}}</p>
-      <p>Id ciclo: {{offerApliques.cicle_id}}</p>
-      <p>Fecha maxima: {{offerApliques.date_max}}</p>
-      <p>Numero de candidatos: {{offerApliques.num_candidates}}</p>
+      <ion-button (click)="abrirModalApliques(offerApliques.id, offerApliques.headline, offerApliques.description,
+      offerApliques.cicle_id, offerApliques.fecha_max, offerApliques.num_candidates)">Ver</ion-button>
       </ion-card-content>
   </ion-card>
     </ion-col>

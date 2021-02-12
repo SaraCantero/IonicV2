@@ -1,9 +1,14 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>admin3</ion-title>
+<ion-grid fixed>
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+    <ion-title color="success">
+      OFERTAS
+    </ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+<ion-content [fullscreen]="true">
+<ion-item-sliding>
+<app-offers [offers]="offers"></app-offers>
+</ion-item-sliding>
 </ion-content>
+</ion-grid>

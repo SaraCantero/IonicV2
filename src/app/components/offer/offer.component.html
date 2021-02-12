@@ -1,11 +1,16 @@
 <ion-card color="dark">
       <ion-card-header>
-      <h2>{{offer.headline}}</h2>
+      <h2>{{headline}}</h2>
       </ion-card-header>
       <ion-card-content>
-      <p>{{offer.description}}</p>
-      <p>{{offer.cicle_id}}</p>
-      <p>{{offer.date_max}}</p>
-      <p>{{offer.num_candidates}}</p>
+      <p>{{description}}</p>
+      <p>{{id}}</p>
+      <p>{{cicle_id}}</p>
+      <p>{{date_max}}</p>
+      <p>{{num_candidates}}</p>
+      <ion-button (click)="salirSinArgumentos()"
+      color="primary" expand="full">
+      Salir
+      </ion-button>
       </ion-card-content>
 </ion-card>
