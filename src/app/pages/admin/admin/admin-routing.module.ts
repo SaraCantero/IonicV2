@@ -20,6 +20,10 @@ const routes: Routes = [
         loadChildren: () => import('../admin3/admin3.module').then(m => m.Admin3PageModule)
       },
       {
+        path: 'admin4',
+        loadChildren: () => import('../admin4/admin4.module').then(m => m.Admin4PageModule)
+      },
+      {
         path: '',
         redirectTo: '/admin/admin1',
         pathMatch: 'full'
