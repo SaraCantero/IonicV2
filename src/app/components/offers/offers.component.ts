@@ -9,9 +9,19 @@ import { RestService } from 'src/app/services/rest.service';
 })
 export class OffersComponent implements OnInit {
 
+  tipo: any;
+  mostrarAplicar: boolean;
   @Input() offers: OffersData[] = [];
   
-  constructor(public restService: RestService) { }
+  constructor(public restService: RestService) {
+    //usar if para establecer boolean ngIf
+    this.tipo=restService.getType();
+    if(this.tipo="client"){
+      this.mostrarAplicar=true;
+    }else{
+      this.mostrarAplicar=false;
+    }
+  }
 
   recogerId($dato: any){
     console.log("Id_oferta: "+$dato);

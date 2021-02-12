@@ -24,9 +24,6 @@ export class Tab2Page {
     this.obtenerOfertas();
     this.obtenerCicloIds();
   }
-
-  //Usar esto para quitar ofertas del apliques
-
   obtenerOfertas(){
     this.restService.getOffers()
     .then((res: any) => {

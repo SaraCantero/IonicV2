@@ -31,7 +31,7 @@ export class RegisterPage implements OnInit {
     .then(async data => {
       console.log(data);
       if(data){
-        this.router.navigateByUrl("/tabs/tab1");
+        this.router.navigateByUrl("/login");
       }else{
         //alert
       }
