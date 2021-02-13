@@ -18,7 +18,7 @@ export class Admin4Page  implements AfterViewInit{
   fecha:any;
   cicles:any;
   ciclesFiltro=4;
-  offersDate=[];
+  offers=[];
 
   constructor(public restService: RestService) {
     this.numOffers=[0,0,0,0,0,0];
@@ -80,15 +80,12 @@ export class Admin4Page  implements AfterViewInit{
     this.restService.getOffers().then(
       (res:any) => {
         if(res.success){
-          this.offersDate=res.data;
+          this.offers=res.data;
           console.log("IF");
 
-          for (let i = 0; i < res.data.length; i++) {
-            console.log(res.data[i]);
-            const element= res.data[i];
-            console.log(element);
-
-            this.offersDate.forEach((fd: {date_max: any}) => {
+            this.offers.forEach((fd) => {
+              const element= fd;
+              console.log(element);
               if (this.ciclesFiltro == element.cicle_id){
                 console.log("IF2");
                 const fechaOferta=parseInt(fd.date_max.substring(5,7));
@@ -98,6 +95,7 @@ export class Admin4Page  implements AfterViewInit{
                   console.log("FOR")
                   if(this.meses[i]=fechaOferta){
                     console.log("IF3");
+                    console.log("Meses: "+this.meses[i]+" FOfertas: "+fechaOferta);
                     this.numOffers[i]=this.numOffers[i]+1;
                     console.log(this.numOffers[i]);
                   }
@@ -108,7 +106,6 @@ export class Admin4Page  implements AfterViewInit{
                 // this.contador=this.contador+1;
               }
             });         
-        }
         console.log("OFERTAS");
         console.log(this.numOffers);
         console.log("OFERTAS");
