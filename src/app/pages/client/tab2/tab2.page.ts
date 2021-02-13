@@ -17,12 +17,15 @@ export class Tab2Page {
   ofId: any;
   contador=0;
   contador2=0;
+  contador3=0;
   clIDs = [];
+  clIDs2 = [];
 
   constructor(public restService: RestService) {
     //this.hacerLogin();
-    this.obtenerOfertas();
     this.obtenerCicloIds();
+    this.obtenerOfertas();
+    this.offerYimg();
   }
   obtenerOfertas(){
     this.restService.getOffers()
@@ -30,11 +33,12 @@ export class Tab2Page {
       this.offers=res.data;
       console.log("OFERTAS");
       console.log(this.offers);
+      console.log("0");
+      console.log(this.cicles);
       if(this.df>0){
         this.contador=0;
         this.clIDs=[];
         this.offers.forEach((id: { cicle_id: number; }) => {
-          console.log("FOREACH");
           if(id.cicle_id==this.df){
             console.log(id);
             this.clIDs[this.contador]=id;
@@ -42,6 +46,9 @@ export class Tab2Page {
           }
         });
         this.offers = this.clIDs;
+        console.log("OFERTA FINAL");
+        console.log(this.offers);
+        console.log("OFERTA FINAL");
       }
     },
     );
@@ -63,5 +70,19 @@ export class Tab2Page {
     })
   }
 
-
+  offerYimg(){
+    this.contador3=0;
+    this.clIDs2=[];
+    this.offers.forEach((f: {cicle_id: number}) => {
+      this.cicles.forEach((c: {id: number, img: any}) => {
+        console.log("HOLA CAPULLO");
+        if(f.cicle_id==c.id){
+          this.clIDs2[this.contador3]=c.img+f;
+          this.contador3=this.contador3+1;
+        }
+      })
+    })
+    console.log("HEY");
+    console.log(this.clIDs2);
+  }
 }
