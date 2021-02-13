@@ -82,7 +82,6 @@ export class Admin4Page  implements AfterViewInit{
         if(res.success){
           this.offersDate=res.data;
           console.log("IF");
-          this.numOffers=[0,0,0,0,0,0];
 
           for (let i = 0; i < res.data.length; i++) {
             console.log(res.data[i]);
