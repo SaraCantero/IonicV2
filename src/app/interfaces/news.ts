@@ -8,3 +8,9 @@ export interface News{
     created_at: string;
 
 }
+
+export interface RespuestaTopHeadlines {
+    status: string;
+    totalResults: number;
+    articles: News[];
+}

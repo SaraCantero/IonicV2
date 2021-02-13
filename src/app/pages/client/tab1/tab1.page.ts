@@ -17,7 +17,7 @@ export class Tab1Page {
   contador2=0;
   clIDs=[];
   cicleUser= this.restService.getcicleUser();
-
+  data: News[] = Array(4);
 
   constructor(public restService: RestService,) {
     // this.hacerLogin();
@@ -25,13 +25,38 @@ export class Tab1Page {
     
   
   }
- 
-  // hacerLogin(){
-  //   this.restService.login('raulreyes@gmail.com','123456').then(data => {
-  //     console.log(data);
-  //     this.token = data;
-  //   });
-  // }
+   loadData(event) {
+     setTimeout(()=>{
+       console.log("Cargando noticias...");
+       if(this.data.length > this.articles.length ){
+       event.target.complete();
+        return;
+      }
+      const nuevoArr = Array(4);
+      this.data.push( ...nuevoArr);
+      event.target.complete();
+
+     }, 1000);
+   
+   }
+
+  //  infArticles(event?){
+  //   this.restService.getTopHeadlines()
+  //   .subscribe(resp => {
+  //     console.log('articles', resp);
+  //     if(resp.articles.length ===0){
+  //       event.target.disabled=true;
+  //       event.target.complete();
+  //       return;
+  //     }
+  //     this.articles.push(...resp.articles);
+  //     if(event){
+  //       event.target.complete();
+  //     }
+  //   })
+  //  }
+
+
 
   obtenerArticles(){
     this.restService.getArticles()
