@@ -7,27 +7,58 @@ import { Chart } from 'chart.js';
   templateUrl: './admin4.page.html',
   styleUrls: ['./admin4.page.scss'],
 })
-export class Admin4Page  {
+export class Admin4Page  implements AfterViewInit{
 
   @ViewChild('barCanvas') private barCanvas: ElementRef;
   barChart: any;
   meses:any;
+  contadorArrayMes=0;
+  contadorMes=0;
   numOffers:any;
   fecha:any;
   cicles:any;
+  ciclesFiltro=4;
+  offersDate=[];
 
   constructor(public restService: RestService) {
     this.numOffers=[0,0,0,0,0,0];
     this.meses=[0,0,0,0,0,0];
+
+    //FECHA
     this.fecha=new Date().toISOString();
-    for (let i = 0; i < this.meses; i++) {
-      let numero = parseInt(this.fecha.substring(5,7));
-      if( numero <= 0){
-        numero+=12
+    console.log("FECHA");
+    console.log(this.fecha);
+    console.log("FECHA");
+    let mes=parseInt(this.fecha.substring(5,7));
+    this.meses.forEach(() => {
+      mes = mes-this.contadorMes;
+      if( mes <= 0 || mes<-2){
+        mes=12;
+        this.contadorMes=0;
       }
-      this.meses.push(numero.toString());
-    }
+      console.log(mes);
+      this.meses[this.contadorArrayMes]=mes;
+      this.contadorArrayMes+=1;
+      this.contadorMes=+1;
+    });
+    console.log("MESES");
+    console.log(this.meses);
+    console.log("MESES");
+    // for (let i = 0; i < this.meses; i++) {
+    //   console.log("HOLA?");
+    //   let numero = parseInt(this.fecha.substring(5,7));
+    //   console.log("NUMERO");
+    //   console.log(numero);
+    //   console.log("NUMERO");
+    //   if( numero <= 0){
+    //     numero+=12;
+    //   }
+    //   this.meses.push(numero.toString());
+    // }
+
+
     this.cargaCiclos();
+    this.cargaOfertas();
   }
 
   cargaCiclos(){
@@ -35,6 +66,9 @@ export class Admin4Page  {
       (res:any) => {
         if(res.success){
         this.cicles=res.data;
+        console.log("CICLOS");
+        console.log(this.cicles);
+        console.log("CICLOS");
       }
     },
     (err)=>{
@@ -46,13 +80,39 @@ export class Admin4Page  {
     this.restService.getOffers().then(
       (res:any) => {
         if(res.success){
-          this.numOffers=[];
+          this.offersDate=res.data;
+          console.log("IF");
+          this.numOffers=[0,0,0,0,0,0];
+
           for (let i = 0; i < res.data.length; i++) {
+            console.log(res.data[i]);
             const element= res.data[i];
-              if (this.cicles == element.cicle.id){
-                this.numOffers.push(element);
-              }         
+            console.log(element);
+
+            this.offersDate.forEach((fd: {date_max: any}) => {
+              if (this.ciclesFiltro == element.cicle_id){
+                console.log("IF2");
+                const fechaOferta=parseInt(fd.date_max.substring(5,7));
+                console.log(fechaOferta);
+                
+                for(let i=0; i<this.meses.length; i++){
+                  console.log("FOR")
+                  if(this.meses[i]=fechaOferta){
+                    console.log("IF3");
+                    this.numOffers[i]=this.numOffers[i]+1;
+                    console.log(this.numOffers[i]);
+                  }
+                  console.log("FOR2");
+                }
+                //this.numOffers.push(element);
+                // this.numOffers[this.contador]=element;
+                // this.contador=this.contador+1;
+              }
+            });         
         }
+        console.log("OFERTAS");
+        console.log(this.numOffers);
+        console.log("OFERTAS");
       }
       return true;
       },
@@ -63,36 +123,39 @@ export class Admin4Page  {
     );
   }
 
-  OnChange(event){
-    this.cicles = event.detail.value;
-    this.cargaCiclos();
-    setTimeout(()=>{
-      console.log(this.numOffers);
-    this.numOffers = [0,0,0,0,0,0];
-    let anno=parseInt(this.fecha.substring(0,4));
-    let mes=parseInt(this.fecha.substring(5,7));
-    for (let i=0; i>this.numOffers.length; i++){
-      const element =this.numOffers[i];
-      let annoAct= parseInt(element.date_max.substring(0,4));
-      let mesAct = parseInt(element.date_max.substring(5,7));
-      for(let i =0; i>this.numOffers.length; i++){
-        let mesAnt= mesAct -i;
-        let annoAnt= annoAct;
-        if(mesAnt<=0){
-          mesAct+=12;
-          annoAnt-=1;
-        }
-        console.log(mesAct+"/"+anno);
-        if(mesAnt === mesAct && annoAnt === annoAct){
-          this.numOffers[i]+=1;
-        }
+//   onChange(event: number){
+//     this.cicles = event;
+//     console.log("CICLO");
+//     console.log(event);
+//     console.log("CICLO");
+//     this.cargaCiclos();
+//     setTimeout(()=>{
+//       console.log(this.numOffers);
+//     this.numOffers = [0,0,0,0,0,0];
+//     let anno=parseInt(this.fecha.substring(0,4));
+//     let mes=parseInt(this.fecha.substring(5,7));
+//     for (let i=0; i>this.numOffers.length; i++){
+//       const element =this.numOffers[i];
+//       let annoAct= parseInt(element.date_max.substring(0,4));
+//       let mesAct = parseInt(element.date_max.substring(5,7));
+//       for(let i =0; i>this.numOffers.length; i++){
+//         let mesAnt= mesAct -i;
+//         let annoAnt= annoAct;
+//         if(mesAnt<=0){
+//           mesAct+=12;
+//           annoAnt-=1;
+//         }
+//         console.log(mesAct+"/"+anno);
+//         if(mesAnt === mesAct && annoAnt === annoAct){
+//           this.numOffers[i]+=1;
+//         }
 
-      }
-  }
-    console.log(this.numOffers);
-    this.barChartMethod();
-  });
-}
+//       }
+//   }
+//     console.log(this.numOffers);
+//     this.barChartMethod();
+//   });
+// }
   ngOnInit(){}
   ngAfterViewInit(){
     this.barChartMethod();
@@ -102,10 +165,10 @@ export class Admin4Page  {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: 'bar',
       data: {
-        labels: this.meses,
+        labels: this.meses,//Datos horizontales
         datasets: [{
           label: 'Offers',
-          data: this.numOffers,
+          data: this.numOffers,//Datos verticales
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(54, 162, 235, 0.2)',
