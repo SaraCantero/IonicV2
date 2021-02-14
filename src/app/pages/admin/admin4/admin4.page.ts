@@ -19,7 +19,7 @@ export class Admin4Page  implements AfterViewInit{
   numOffers:any;
   fecha:any;
   cicles:any;
-  ciclesFiltro=5;
+  ciclesFiltro= 0;
   offers=[];
 
   constructor(public restService: RestService) {
@@ -40,9 +40,7 @@ export class Admin4Page  implements AfterViewInit{
         mes=12;
         this.contadorMes=0;
         this.año2=this.año1-1;
-        console.log("Año2: "+this.año2);
       }
-      console.log(mes);
       this.meses[this.contadorArrayMes]=mes;
       this.contadorArrayMes+=1;
       this.contadorMes=+1;
@@ -82,18 +80,22 @@ export class Admin4Page  implements AfterViewInit{
     }
     );
   }
+  
   cargaOfertas(){
+    this.numOffers=[0,0,0,0,0,0];
+    this.offers=null;
     this.restService.getOffers().then(
       (res:any) => {
         if(res.success){
           this.offers=res.data;
           console.log("IF");
 
+          console.log("CicleF: "+this.ciclesFiltro);
             this.offers.forEach((fd) => {
-              const element= fd;
-              console.log(element);
-              if (this.ciclesFiltro === element.cicle_id){
+              console.log("FD: "+fd.cicle_id);
+              if (this.ciclesFiltro == fd.cicle_id || this.ciclesFiltro==0){
                 console.log("IF2");
+                console.log("CiclesFiltro: "+this.ciclesFiltro);
                 const anoOferta=parseInt(fd.date_max.substring(0,4));
                 console.log(anoOferta);
                 const fechaOferta=parseInt(fd.date_max.substring(5,7));
@@ -101,8 +103,8 @@ export class Admin4Page  implements AfterViewInit{
                 
                 for(let i=0; i<this.meses.length; i++){
                   console.log("FOR")
-                  if(this.año1===anoOferta || this.año2===anoOferta){
-                  if(this.meses[i]===fechaOferta){
+                  if(this.año1==anoOferta || this.año2==anoOferta){
+                  if(this.meses[i]==fechaOferta){
                     console.log("IF3");
                     console.log("Meses: "+this.meses[i]+" FOfertas: "+fechaOferta);
                     this.numOffers[i]=this.numOffers[i]+1;
@@ -118,6 +120,7 @@ export class Admin4Page  implements AfterViewInit{
         console.log("OFERTAS");
         console.log(this.numOffers);
         console.log("OFERTAS");
+        this.ngAfterViewInit();
       }
       return true;
       },
@@ -130,36 +133,11 @@ export class Admin4Page  implements AfterViewInit{
 
   onChange(event: number){
     this.ciclesFiltro = event;
-    console.log("CICLO");
+    console.log("FILTRO");
     console.log(event);
-    console.log("CICLO");
+    console.log("FILTRO");
     this.cargaCiclos();
-    setTimeout(()=>{
-      console.log(this.numOffers);
-    this.numOffers = [0,0,0,0,0,0];
-    let anno=parseInt(this.fecha.substring(0,4));
-    let mes=parseInt(this.fecha.substring(5,7));
-    for (let i=0; i>this.numOffers.length; i++){
-      const element =this.numOffers[i];
-      let annoAct= parseInt(element.date_max.substring(0,4));
-      let mesAct = parseInt(element.date_max.substring(5,7));
-      for(let i =0; i>this.numOffers.length; i++){
-        let mesAnt= mesAct -i;
-        let annoAnt= annoAct;
-        if(mesAnt<=0){
-          mesAct+=12;
-          annoAnt-=1;
-        }
-        console.log(mesAct+"/"+anno);
-        if(mesAnt === mesAct && annoAnt === annoAct){
-          this.numOffers[i]+=1;
-        }
-
-      }
-  }
-    console.log(this.numOffers);
-    this.barChartMethod();
-  });
+    this.cargaOfertas();
 }
   ngOnInit(){}
   ngAfterViewInit(){
@@ -172,7 +150,7 @@ export class Admin4Page  implements AfterViewInit{
       data: {
         labels: this.meses,//Datos horizontales
         datasets: [{
-          label: 'Offers',
+          label: 'ljbi',
           data: this.numOffers,//Datos verticales
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
