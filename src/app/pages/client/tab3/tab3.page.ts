@@ -22,7 +22,7 @@ export class Tab3Page {
     this.obtenerOfertasApliques();
     setTimeout(() => {
       this.offerYimg();
-    },1000)
+    },1000);
   }
 
   obtenerOfertasApliques(){
@@ -75,4 +75,11 @@ export class Tab3Page {
     })
   }
 
+  refrescar(){
+    this.obtenerCicloIds();
+    this.obtenerOfertasApliques();
+    setTimeout(() => {
+      this.offerYimg();
+    },1000);
+  }
 }

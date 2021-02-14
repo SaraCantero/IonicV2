@@ -1,6 +1,9 @@
 <app-header titulo="OFERTAS"></app-header>
 
 <ion-content [fullscreen]="true">
+<ion-button (click)="refrescar()">
+          <ion-icon name="repeat-outline"></ion-icon>
+</ion-button>
     <ion-item>
           <ion-label>Selecciona un ciclo</ion-label>
           <ion-select okText="Aceptar" cancelText="Cancelar" [(ngModel)]="df" (ionChange)="onChange(df)">

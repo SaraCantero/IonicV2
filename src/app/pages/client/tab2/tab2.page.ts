@@ -22,7 +22,6 @@ export class Tab2Page {
   images = [];
 
   constructor(public restService: RestService) {
-    //this.hacerLogin();
       this.obtenerOfertas();
       this.obtenerCicloIds();
       setTimeout(() => {
@@ -99,4 +98,11 @@ export class Tab2Page {
     this.restService.setImagesOffers(this.images);
   }
 
+  refrescar(){
+    this.obtenerOfertas();
+    this.obtenerCicloIds();
+    setTimeout(() => {
+      this.offerYimg();
+    },1000);
+  }
 }

@@ -1,7 +1,9 @@
 <app-header titulo="MIS APLIQUES"></app-header>
 
 <ion-content [fullscreen]="true">
-
+<ion-button (click)="refrescar()">
+          <ion-icon name="repeat-outline"></ion-icon>
+</ion-button>
   <ion-col size="12" size-lg="3" size-md="2" size-sm="6" size-xs="12"
   *ngFor="let offerApliques of offersApliques; let i = index">
   <ion-card color="dark">
