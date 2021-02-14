@@ -5,13 +5,15 @@ import {ArticleComponent} from './article/article.component';
 import { IonicModule } from '@ionic/angular';
 import { OfferComponent } from './offer/offer.component';
 import { OffersComponent } from './offers/offers.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
     ArticleComponent,
     ArticlesComponent,
     OfferComponent,
-    OffersComponent
+    OffersComponent,
+    HeaderComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { OffersComponent } from './offers/offers.component';
   ],
   exports: [
     ArticlesComponent,
-    OffersComponent
+    OffersComponent,
+    HeaderComponent
    ]
 
 })
