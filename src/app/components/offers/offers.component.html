@@ -3,6 +3,7 @@ size-sm="6" size-xs="12"
 *ngFor="let offer of offers; let i = index">
 <ion-card color="dark">
       <ion-card-header>
+      <img src="assets/img/{{imagesOffers[i]}}" width="50" height="50"/>
       <h2>{{offer.headline}}</h2>
       </ion-card-header>
       <ion-card-content *ngIf=(mostrarAplicar)>
