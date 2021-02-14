@@ -17,8 +17,6 @@ import { ExploreContainerComponentModule } from '../../../explore-container/expl
     ExploreContainerComponentModule,
     Admin1PageRoutingModule,
     ComponentsModule,
-
-
   ],
   declarations: [Admin1Page]
 })

@@ -1,16 +1,12 @@
-<ion-grid fixed>
-<ion-header [translucent]="true">
-  <ion-toolbar color="dark">
-    <ion-title color="success">
-      OFERTAS
-    </ion-title>
-    <ion-select okText="Aceptar" cancelText="Cancelar" [(ngModel)]="df" (ionChange)="onChange(df)">
-    <ion-select-option value=0>Todos</ion-select-option>
-    <ion-select-option *ngFor="let cicle of cicles" value="{{cicle.id}}">{{cicle.name}} ({{cicle.id}})</ion-select-option>
-    </ion-select>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="OFERTAS"></app-header>
+
 <ion-content [fullscreen]="true">
+    <ion-item>
+          <ion-label>Selecciona un ciclo</ion-label>
+          <ion-select okText="Aceptar" cancelText="Cancelar" [(ngModel)]="df" (ionChange)="onChange(df)">
+          <ion-select-option value=0>Todos</ion-select-option>
+          <ion-select-option *ngFor="let cicle of cicles" value="{{cicle.id}}">{{cicle.name}} ({{cicle.id}})</ion-select-option>
+          </ion-select>
+      </ion-item>
 <app-offers [offers]="offers"></app-offers>
 </ion-content>
-</ion-grid>

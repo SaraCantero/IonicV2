@@ -3,6 +3,8 @@ import { ActionSheetController } from '@ionic/angular';
 import { OffersData } from 'src/app/interfaces/offers';
 import { RestService } from 'src/app/services/rest.service';
 
+
+
 @Component({
   selector: 'app-admin3',
   templateUrl: './admin3.page.html',
@@ -15,6 +17,7 @@ export class Admin3Page {
   constructor(public restService: RestService, private actionSheetCtrl: ActionSheetController) { 
     this.obtenerOfertas2();
   }
+  
 
   obtenerOfertas2(){
     this.restService.getAllOffers()

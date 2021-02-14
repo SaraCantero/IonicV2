@@ -1,11 +1,5 @@
-<ion-grid fixed>
-<ion-header [translucent]="true">
-  <ion-toolbar color="dark">
-    <ion-title color="success">
-      OFERTAS
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="OFERTAS"></app-header>
+
 <ion-content [fullscreen]="true">
 <ion-item-sliding *ngFor="let offer of offers">
 <ion-item>
@@ -18,4 +12,3 @@
 </ion-item-options>
 </ion-item-sliding>
 </ion-content>
-</ion-grid>

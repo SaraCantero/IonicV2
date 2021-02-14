@@ -1,16 +1,9 @@
-<ion-grid fixed>
-<ion-header [translucent]="true">
-  <ion-toolbar color="dark">
-    <ion-title color="success">
-      USUARIOS
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-header titulo="USUARIOS"></app-header>
 
 <ion-content>
 <ion-list>
 <ion-item-sliding *ngFor="let user of usuarios" >
-    <ion-item *ngIf="user.actived==0">
+    <ion-item *ngIf="user.actived==0">compo
       <ion-label>
         {{user.name}} 
         {{user.surname}}

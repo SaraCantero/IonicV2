@@ -7,6 +7,7 @@ import { Users } from 'src/app/interfaces/users';
   templateUrl: './admin1.page.html',
   styleUrls: ['./admin1.page.scss'],
 })
+
 export class Admin1Page {
 
    usuarios: any;
