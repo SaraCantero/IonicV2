@@ -4,12 +4,15 @@ import { ModalController } from "@ionic/angular";
 import { OfferComponent } from "../components/offer/offer.component";
 //import { registerLocaleData } from "@angular/common";
 //import { resolve } from "dns";
+import { RespuestaTopHeadlines } from '../interfaces/news';
 
+const headers = new HttpHeaders;
 @Injectable({
   providedIn: "root",
 })
 export class RestService {
   
+  headlinesPage=0;
   apiUrl = "https://allsites.es/sales_in_api/public/api";
   token: any;
   //tokenLogin: any; //Recibe el token del metodo login
@@ -30,6 +33,18 @@ export class RestService {
   constructor(private http: HttpClient, private modalCtrl: ModalController) {}
 
   //Metodos
+
+  private ejecutarQuery<T>(query: string) {
+    query = this.apiUrl + query;
+
+    return this.http.get<T>(query, { headers });
+  }
+
+  // getTopHeadlines() {
+  //   this.headlinesPage++;
+  //   return this.ejecutarQuery<RespuestaTopHeadlines>
+  //   (`/top-headlines?country=us&page=${this.headlinesPage}`);
+  // }
 
   getUsuarios(){
     return new Promise((resolve) => {
