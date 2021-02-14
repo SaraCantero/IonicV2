@@ -7,7 +7,7 @@ import { Chart } from 'chart.js';
   templateUrl: './admin4.page.html',
   styleUrls: ['./admin4.page.scss'],
 })
-export class Admin4Page  implements AfterViewInit{
+export class Admin4Page implements AfterViewInit{
 
   @ViewChild('barCanvas') private barCanvas: ElementRef;
   barChart: any;
@@ -130,8 +130,11 @@ export class Admin4Page  implements AfterViewInit{
   }
   
   ponerNombres(){
-    for(let i=0;i<this.fecha.length;i++){
-      this.mesesLetrasFiltrado[i]=this.mesesLetras[this.fecha[i]-1];
+    this.meses=this.meses.reverse();
+    console.log(this.meses);
+    for(let i=0;i<this.meses.length;i++){
+      this.mesesLetrasFiltrado[i]=this.mesesLetras[this.meses[i]-1];
+      this.mesesLetrasFiltrado;
     }
   }
 
@@ -146,7 +149,7 @@ export class Admin4Page  implements AfterViewInit{
       data: {
         labels: this.mesesLetrasFiltrado,//Datos horizontales
         datasets: [{
-          label: 'ljbi',
+          label: 'Ofertas',
           data: this.numOffers,//Datos verticales
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
