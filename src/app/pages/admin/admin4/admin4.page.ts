@@ -18,6 +18,9 @@ export class Admin4Page  implements AfterViewInit{
   contadorMes=0;
   numOffers:any;
   fecha:any;
+  mesesLetras=["Enero","Febrero","Marzo","Abril","Mayo","Junio",
+  "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+  mesesLetrasFiltrado=[];
   cicles:any;
   ciclesFiltro= 0;
   offers=[];
@@ -48,18 +51,7 @@ export class Admin4Page  implements AfterViewInit{
     console.log("MESES");
     console.log(this.meses);
     console.log("MESES");
-    // for (let i = 0; i < this.meses; i++) {
-    //   console.log("HOLA?");
-    //   let numero = parseInt(this.fecha.substring(5,7));
-    //   console.log("NUMERO");
-    //   console.log(numero);
-    //   console.log("NUMERO");
-    //   if( numero <= 0){
-    //     numero+=12;
-    //   }
-    //   this.meses.push(numero.toString());
-    // }
-
+    this.ponerNombres();
 
     this.cargaCiclos();
     this.cargaOfertas();
@@ -112,9 +104,6 @@ export class Admin4Page  implements AfterViewInit{
                   }}
                   console.log("FOR2");
                 }
-                //this.numOffers.push(element);
-                // this.numOffers[this.contador]=element;
-                // this.contador=this.contador+1;
               }
             });         
         console.log("OFERTAS");
@@ -138,7 +127,14 @@ export class Admin4Page  implements AfterViewInit{
     console.log("FILTRO");
     this.cargaCiclos();
     this.cargaOfertas();
-}
+  }
+  
+  ponerNombres(){
+    for(let i=0;i<this.fecha.length;i++){
+      this.mesesLetrasFiltrado[i]=this.mesesLetras[this.fecha[i]-1];
+    }
+  }
+
   ngOnInit(){}
   ngAfterViewInit(){
     this.barChartMethod();
@@ -148,7 +144,7 @@ export class Admin4Page  implements AfterViewInit{
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       type: 'bar',
       data: {
-        labels: this.meses,//Datos horizontales
+        labels: this.mesesLetrasFiltrado,//Datos horizontales
         datasets: [{
           label: 'ljbi',
           data: this.numOffers,//Datos verticales
