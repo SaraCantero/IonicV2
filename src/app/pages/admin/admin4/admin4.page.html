@@ -4,6 +4,7 @@
   <ion-item>
         <ion-label>Selecciona un ciclo</ion-label>
         <ion-select okText="Aceptar" cancelText="Cancelar" [(ngModel)]="ciclesFiltro" (ionChange)="onChange(ciclesFiltro)">
+        <ion-select-option value=0>Todos</ion-select-option>
         <ion-select-option *ngFor="let cicle of cicles" value="{{cicle.id}}">{{cicle.name}} ({{cicle.id}})</ion-select-option>
         </ion-select>
       </ion-item>

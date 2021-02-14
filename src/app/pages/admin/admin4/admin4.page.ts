@@ -76,7 +76,7 @@ export class Admin4Page implements AfterViewInit{
   cargaOfertas(){
     this.numOffers=[0,0,0,0,0,0];
     this.offers=null;
-    this.restService.getOffers().then(
+    this.restService.getAllOffers().then(
       (res:any) => {
         if(res.success){
           this.offers=res.data;
