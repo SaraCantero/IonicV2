@@ -27,6 +27,7 @@ export class RestService {
   token2 = "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDUzYTFhOTNmNjMyOGE4ZWJjY2ZlYzZkMGE0YzgwZmE1M2RhYzBiNzgzOGI4NmVjZmE1NGU4YzZmOWIwM2ZkZDI4ZDFmMGM4MmVlYzZlMTciLCJpYXQiOjE2MTMwNDEwMTQsIm5iZiI6MTYxMzA0MTAxNCwiZXhwIjoxNjQ0NTc3MDE0LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.g3ouhEO3AGccEQxQdAhWy67JDfVXL1NbPDgvnT75TfuUQBCMYvyo3l3i1J1dzekfzOI9-GCgmS5EtZkINK4NvKp2FVIEjpAli9XJGd5Fnbr8cqN823NFMMBkCGdohGAFNkOo03jOgeX7ubg4NYRsF2R-h59UlKkaUVeDayezKId3pYQ_OE1snZugT5Gp7TMaK9KlDJlbC5z04qY6I_QL5CeTMETv8GjjViRPbcL4l3faC8dpIC7hbh-kyblsXD2lk60bU0ByfGZkEMxJjR_Obbh_2TqIXY19d4PZRU7qQOXfHgcwxF9ftPAWK_piAxKkwpJZnWE1HCFp3AWqdNlh2PphFyUvwqT5sj_TzX_-JViFhFhRrQ6bvqiiiyykw4OwmHVsNLgXtZCfWxUIAuM3OA8QHXxisMeMzJx0HW3wEKV3dE2DzJ9dnV7JBET8t0To5tXNm1wIxBsPA2cQtsQ9uexC2JAtBUBzIQn8Hm7IJGfWJ-i-VA09EUV6ObAgDKd0EKVmHyv5e1iPr3aCXzPEYOojOY_8QNH4jHeDOSnl_avInuxhIn9QEVcP0eP5GW6YDwMwBBYfOY_V2knjChvI3Egai6viMfAhhmuP2aRQa5tDAl4iIRh_Fa60o53Swl0vHnSut3fKlKIZRMfHprZi95nT_xu6JKb6hiexO1BNtcw";
   cicleUser=1;
   userId=37;
+  imagesOffers=[];
   //
  
 
@@ -299,4 +300,14 @@ export class RestService {
   getCicleIdFoto(){
     return this.cicleIdFoto;
   }
+
+  //Imágenes ofertas
+  setImagesOffers(valor:any){
+    this.imagesOffers=valor;
+  }
+
+  getImagesOffers(){
+    return this.imagesOffers;
+  }
+
 }

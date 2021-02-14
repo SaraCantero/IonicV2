@@ -19,21 +19,24 @@ export class Tab2Page {
   contador2=0;
   contador3=0;
   clIDs = [];
-  clIDs2 = [];
+  images = [];
 
   constructor(public restService: RestService) {
     //this.hacerLogin();
-    this.obtenerCicloIds();
-    this.obtenerOfertas();
-    this.offerYimg();
+      this.obtenerOfertas();
+      this.obtenerCicloIds();
+      setTimeout(() => {
+        this.offerYimg();
+      },1000);
   }
   obtenerOfertas(){
+    console.log("ENTRO OFERTAS");
     this.restService.getOffers()
     .then((res: any) => {
-      this.offers=res.data;
+      this.offers=res.data;      
       console.log("OFERTAS");
       console.log(this.offers);
-      console.log("0");
+      console.log("CICLOS EN OFERTAS")
       console.log(this.cicles);
       if(this.df>0){
         this.contador=0;
@@ -62,27 +65,38 @@ export class Tab2Page {
   }
 
   obtenerCicloIds(){
+    console.log("ENTRO CICLOS");
     this.contador2=0;
     this.restService.getCicles()
     .then((res: any) => {
+      console.log("OBTENGO CICLOS");
       this.cicles=res.data;
       console.log(this.cicles);
     })
   }
 
   offerYimg(){
+    console.log("ENTRO FOTOS");
     this.contador3=0;
-    this.clIDs2=[];
+    this.images=[];
+    console.log("OFFERS:")
+    console.log(this.offers);
+    console.log("CICLES:");
+    console.log(this.cicles);
     this.offers.forEach((f: {cicle_id: number}) => {
+      console.log("FOREACH");
       this.cicles.forEach((c: {id: number, img: any}) => {
-        console.log("HOLA CAPULLO");
+        console.log("FOREACHDOBLE");
         if(f.cicle_id==c.id){
-          this.clIDs2[this.contador3]=c.img+f;
+          this.images[this.contador3]=c.img;
           this.contador3=this.contador3+1;
         }
       })
     })
     console.log("HEY");
-    console.log(this.clIDs2);
+    console.log(this.images);
+    console.log("HEY");
+    this.restService.setImagesOffers(this.images);
   }
+
 }
