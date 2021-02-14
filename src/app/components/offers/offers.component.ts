@@ -37,7 +37,7 @@ export class OffersComponent implements OnInit {
   }
 
   abrirModalOffers($id1: any, $titulo1: any, $descripcion1: any, $ciclo1: any, $fecha1: any, $cand1: any){
-    this.restService.abrirModal($id1, $titulo1, $descripcion1, $ciclo1, $fecha1, $cand1);
+    this.restService.abrirModal2($id1, $titulo1, $descripcion1, $ciclo1, $fecha1, $cand1);
   }
   
   ngOnInit() {}

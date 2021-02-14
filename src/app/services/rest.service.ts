@@ -167,6 +167,21 @@ export class RestService {
       await modal.present();
   }
   
+  async abrirModal2($id: any, $titulo: any, $descripcion: any, $ciclo: any, $fecha: any, $cand: any){
+    const modal = await this.modalCtrl.create({
+      component: OfferComponent,
+      componentProps: {
+      headline: $titulo,
+      description: $descripcion,
+      id: 'Id: '+$id,
+      cicle_id: 'Id Ciclo: '+$ciclo,
+      date_max: 'Fecha máx: '+$fecha,
+      num_candidates: 'Num Candidatos: '+$cand
+      }
+      });
+      await modal.present();
+  }
+
   borrarOfertas(idO: any){
     return new Promise<any>((resolve) => {
       this.http.delete(this.apiUrl + "/offers/"+idO, { 
